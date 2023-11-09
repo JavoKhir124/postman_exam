@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "1608a54c-17ee-4dac-b9a5-c8c3835e8640",
+		"name": "UZD+",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29591588"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk0NTcxMzMsImlzcyI6InVzZXIiLCJwaWQiOjE1NjY1MSwicm9sZSI6ImN1c3RvbWVyIiwic3ViIjoiNDAzMGE4NzMtYTllNi00ZTUyLWI3YjItNmJjYWU1Y2ZhNGE0In0.XLRq6dS4AH4-c1O-0rOr1fwcdLaya-5xsfSwxo9Kqhk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"apple_id\": \"\",\r\n\"facebook_id\": \"\",\r\n\"fcm_token\": \"\",\r\n\"google_id\": \"\",\r\n\"name\": \"Javokhir\",\r\n\"phone\": \"+998931431817\",\r\n\"platform\": 0,\r\n\"tag\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/register",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Phone_Number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"+998931431817\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/phone-exists?phone=%2B998931431817",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"phone-exists"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "%2B998931431817"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check OTP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"896305\",\r\n    \"phone\": \"+998931431817\",\r\n    \"platform_name\": \"Windows x64 | Microsoft Edge 119.0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/check-code",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"check-code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration_Negative",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"apple_id\": \"\",\r\n\"facebook_id\": \"\",\r\n\"fcm_token\": \"\",\r\n\"google_id\": \"\",\r\n\"name\": \"Javokhir\",\r\n\"phone\": \"  \",\r\n\"platform\": 0,\r\n\"tag\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/register",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check OTP negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"111111\",\r\n    \"phone\": \"+998931431817\",\r\n    \"platform_name\": \"Windows x64 | Microsoft Edge 119.0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/check-code",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"check-code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Space on the Name field",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"apple_id\": \"\",\r\n\"facebook_id\": \"\",\r\n\"fcm_token\": \"\",\r\n\"google_id\": \"\",\r\n\"name\": \"  \",\r\n\"phone\": \"+998931431817\",\r\n\"platform\": 0,\r\n\"tag\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spec.uzd.udevs.io/v1/customer/register",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spec",
+						"uzd",
+						"udevs",
+						"io"
+					],
+					"path": [
+						"v1",
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
